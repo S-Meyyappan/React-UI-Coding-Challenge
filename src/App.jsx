@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { Toast } from "bootstrap"; 
 
 import Userlist from "./components/Userlist";
+import AddUser from "./components/AddUser";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeLayout />}>
             <Route path="user-list" element={<Userlist />}/>
+            <Route path="add-user" element={<AddUser />}/>
           </Route>
         </Routes>
      </>

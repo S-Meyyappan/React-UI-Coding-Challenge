@@ -54,9 +54,9 @@ export default function Userlist() {
                             <tr>
                                 <th scope="col" className="ps-4 py-3">#</th>
                                 <th scope="col" className="py-3">Name</th>
-                                <th scope="col" className="py-3">Username</th>
+                                <th scope="col" className="py-3">Company</th>
                                 <th scope="col" className="py-3">Email</th>
-                                <th scope="col" className="py-3">Address</th>
+                                <th scope="col" className="py-3">Phone</th>
                                 <th scope="col" className="text-end pe-4 py-3">Actions</th>
                             </tr>
                         </thead>
@@ -73,13 +73,14 @@ export default function Userlist() {
                                     <tr key={index}>
                                         <td className="fw-medium text-dark text-center">{p.id}</td>
                                         <td className="fw-medium text-dark">{p.name}</td>
-                                        <td className="text-muted">{p.username}</td>
+                                        {/* Compatibility fix: Reads company.name if object, or defaults to plain company string */}
+                                        <td className="text-muted">{p.company?.name || p.company || "N/A"}</td>
+                                        <td className="text-muted">{p.email}</td>
                                         <td>
                                             <span className="badge bg-light text-dark border">
-                                                {p.email}
+                                                {p.phone}
                                             </span>
                                         </td>
-                                        <td className="text-muted">{p.address.street + ", " + p.address.city + ", " + p.address.zipcode}</td>
                                         <td className="text-center">
                                             <button
                                                 className="btn btn-outline-danger border-0 rounded-circle"
@@ -95,6 +96,7 @@ export default function Userlist() {
                     </table>
                 </div>
             </div>
+
 
             {/* Delete toast */}
             <div className="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style={{ zIndex: 1055 }}>

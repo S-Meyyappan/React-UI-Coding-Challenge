@@ -15,16 +15,25 @@ export const UserlistReducer = (state = initialState, action) => {
                 successmsg : "Fetched Users Successfully",
                 errmsg : ""
             }
-        case 'GET_ALL_FAILURE':
+        case 'GET_ALL_FAIL':
             return{
                 ...state,
                 errmsg : action.payload,
                 successmsg : ""
             }
-        case 'DELETE_USER':
+        case 'DELETE_USER_SUCCESS':
             return{
                 ...state,
-                list : state.list.filter((u) => u.id !== action.payload)
+                list : state.list.filter((u) => u.id !== action.payload),
+                successmsg: "User deleted successfully!",
+                errmsg: ""
+            }
+        case 'ADD_USER_SUCCESS':
+            return{
+                ...state,
+                list : [...state.list, action.payload],
+                successmsg: "User added successfully!",
+                errmsg: ""
             }
         default:
             return state

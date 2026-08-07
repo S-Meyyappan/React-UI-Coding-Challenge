@@ -20,6 +20,18 @@ export default function Userlist() {
         showToast("liveToast")
     }
 
+    const handleSuccessMessage = () => {
+        if(successmsg){
+            showToast("successToast")
+        }
+    }
+
+    const handleErrMessage = () => {
+        if(errmsg){
+            showToast("errToast")
+        }
+    }
+
     const handleConfirmDelete = (id) => {
         dispatch(deleteUser(id))
         const toastElement = document.getElementById("liveToast");
@@ -40,6 +52,11 @@ export default function Userlist() {
     useEffect(() => {
         dispatch(getAllData())
     }, [dispatch])
+
+    useEffect(() => {
+        handleSuccessMessage()
+        handleErrMessage()
+    }, [successmsg])
 
     console.log(users)
 
@@ -114,6 +131,27 @@ export default function Userlist() {
                     </div>
                 </div>
             </div>
+
+            {/*Added successfully Toast */}
+            <div id="successToast" className="toast align-items-center text-bg-success border-0 position-fixed top-0 start-50 translate-middle-x" role="alert">
+                    <div className="d-flex">
+                        <div className="toast-body">
+                            {successmsg}
+                        </div>
+                        <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+
+
+            {/*Deleted successfully Toast */}
+            <div id="errToast" className="toast align-items-center text-bg-warning border-0 position-fixed top-0 start-50 translate-middle-x" role="alert">
+                    <div className="d-flex">
+                        <div className="toast-body">
+                            {errmsg}
+                        </div>
+                        <button type="button" className="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
 
         </>
     )

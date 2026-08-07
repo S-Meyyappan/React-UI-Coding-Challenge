@@ -28,20 +28,20 @@ export default function AddUser() {
 
     const handleSubmit = ($event) => {
         $event.preventDefault()
-        if (formData.name === "" || formData.phone === "" || formData.email === "" || formData.company === "") {
+        if (formData.name === "" || formData.phone === "" || formData.email === "") {
             setMissing(true)
             return
         }
         dispatch(addUser(formData))
         navigate('/user-list')
-    }   
+    }
 
     return (
         <>
             <h1 className="ms-4 my-3">Add User</h1>
 
             {missing && (
-                <div className="alert alert-warning p-2 small mb-3 w-50">
+                <div className="alert alert-warning p-2 small mb-3 w-50 ms-5">
                     Please fill all fields
                 </div>
             )}
@@ -54,7 +54,7 @@ export default function AddUser() {
 
                         <div className="row align-items-center mb-3">
                             <div className="col-2">
-                                <label className="col-form-label fw-medium">Name :</label>
+                                <label className="col-form-label fw-medium">Name <span className="text-danger">*</span></label>
                             </div>
                             <div className="col-10">
                                 <input type="text" name="name" className="form-control" value={formData.name} onChange={handleChange} />
@@ -64,7 +64,7 @@ export default function AddUser() {
 
                         <div className="row align-items-center mb-3">
                             <div className="col-2">
-                                <label className="col-form-label fw-medium">Phone :</label>
+                                <label className="col-form-label fw-medium">Phone <span className="text-danger">*</span></label>
                             </div>
                             <div className="col-10">
                                 <input type="tel" name="phone" className="form-control" value={formData.phone} onChange={handleChange} />
@@ -74,7 +74,7 @@ export default function AddUser() {
 
                         <div className="row align-items-center mb-3">
                             <div className="col-2">
-                                <label className="col-form-label fw-medium">Email :</label>
+                                <label className="col-form-label fw-medium">Email <span className="text-danger">*</span></label>
                             </div>
                             <div className="col-10">
                                 <input type="email" name="email" className="form-control" value={formData.email} onChange={handleChange} />
@@ -83,7 +83,7 @@ export default function AddUser() {
 
                         <div className="row align-items-center mb-4">
                             <div className="col-2">
-                                <label className="col-form-label fw-medium">Company :</label>
+                                <label className="col-form-label fw-medium">Company</label>
                             </div>
                             <div className="col-10">
                                 <input type="text" name="company" className="form-control" value={formData.company} onChange={handleChange} />

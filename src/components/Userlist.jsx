@@ -17,7 +17,7 @@ export default function Userlist() {
 
     const clickDelete = (p) => {
         setSelectedUser(p)
-        showToast("liveToast")
+        showToast("deleteToast")
     }
 
     const handleSuccessMessage = () => {
@@ -34,7 +34,8 @@ export default function Userlist() {
 
     const handleConfirmDelete = (id) => {
         dispatch(deleteUser(id))
-        const toastElement = document.getElementById("liveToast");
+        // Hiding the toast manually 
+        const toastElement = document.getElementById("deleteToast");
         if (toastElement) {
             const toastInstance = new Toast(toastElement)
             toastInstance.hide()
@@ -44,7 +45,7 @@ export default function Userlist() {
     const showToast = (element) => {
         const toastElement = document.getElementById(element);
         if (toastElement) {
-            const toastInstance = new Toast(toastElement, { autoHide: false });
+            const toastInstance = new Toast(toastElement, { autohide: false });
             toastInstance.show();
         }
     }
@@ -71,8 +72,8 @@ export default function Userlist() {
                             <tr>
                                 <th scope="col" className="ps-4 py-3">#</th>
                                 <th scope="col" className="py-3">Name</th>
-                                <th scope="col" className="py-3">Company</th>
                                 <th scope="col" className="py-3">Email</th>
+                                <th scope="col" className="py-3">Company</th>
                                 <th scope="col" className="py-3">Phone</th>
                                 <th scope="col" className="text-end pe-4 py-3">Actions</th>
                             </tr>
@@ -90,19 +91,15 @@ export default function Userlist() {
                                     <tr key={index}>
                                         <td className="fw-medium text-dark text-center">{p.id}</td>
                                         <td className="fw-medium text-dark">{p.name}</td>
-                                        {/* Compatibility fix: Reads company.name if object, or defaults to plain company string */}
-                                        <td className="text-muted">{p.company?.name || p.company || "N/A"}</td>
                                         <td className="text-muted">{p.email}</td>
+                                        <td className="text-muted">{p.company?.name || p.company || "N/A"}</td>
                                         <td>
                                             <span className="badge bg-light text-dark border">
                                                 {p.phone}
                                             </span>
                                         </td>
                                         <td className="text-center">
-                                            <button
-                                                className="btn btn-outline-danger border-0 rounded-circle"
-                                                id="liveToastBtn"
-                                                onClick={() => clickDelete(p)}>
+                                            <button className="btn btn-outline-danger border-0 rounded-circle" onClick={() => clickDelete(p)}>
                                                 <i className="bi bi-trash fs-5"></i>
                                             </button>
                                         </td>
@@ -117,7 +114,7 @@ export default function Userlist() {
 
             {/* Delete toast */}
             <div className="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style={{ zIndex: 1055 }}>
-                <div id="liveToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="deleteToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div className="toast-header bg-light">
                         <strong className="me-auto">Confirm deleting user {selectedUser?.name}</strong>
                         <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

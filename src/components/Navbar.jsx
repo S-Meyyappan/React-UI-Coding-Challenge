@@ -20,7 +20,7 @@ export default function Navbar() {
                         <li className="nav-item">
                             <NavLink 
                                 className={({ isActive }) => isActive ? "nav-link text-primary" : "nav-link"} 
-                                to="/userlist"
+                                to="/user-list"
                             >
                                 Userlist
                             </NavLink>

@@ -21,6 +21,11 @@ export const UserlistReducer = (state = initialState, action) => {
                 errmsg : action.payload,
                 successmsg : ""
             }
+        case 'DELETE_USER':
+            return{
+                ...state,
+                list : state.list.filter((u) => u.id !== action.payload)
+            }
         default:
             return state
     }

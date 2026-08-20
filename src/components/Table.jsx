@@ -16,8 +16,6 @@ export default function Table() {
         dispatch(getAllInfo())
     }, [])
 
-    console.log(products)
-
     return (
         <>
             <h1 className="container">Products List : </h1>

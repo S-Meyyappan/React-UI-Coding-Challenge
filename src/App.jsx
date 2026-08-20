@@ -9,6 +9,7 @@ import { Toast } from "bootstrap";
 
 import Userlist from "./components/Userlist";
 import AddUser from "./components/AddUser";
+import Table from "./components/Table";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<HomeLayout />}>
             <Route path="user-list" element={<Userlist />}/>
             <Route path="add-user" element={<AddUser />}/>
+            <Route path="product-list" element={<Table />} />
           </Route>
         </Routes>
      </>

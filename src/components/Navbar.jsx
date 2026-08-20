@@ -33,6 +33,14 @@ export default function Navbar() {
                                 Add User
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink 
+                                className={({ isActive }) => isActive ? "nav-link text-primary" : "nav-link"} 
+                                to="/product-list"
+                            >
+                                Product List
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
